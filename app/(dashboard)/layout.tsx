@@ -35,7 +35,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             </div>
           </nav>
         </header>
-        <div className="h-[calc(100vh-60px)]">{children}</div>
+        <div className="h-[calc(100vh-70px)]">{children}</div>
       </div>
     </div>
   );

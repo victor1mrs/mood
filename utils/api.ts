@@ -1,8 +1,8 @@
-const createURL = (path) => window.location.origin + path
+const createURL = (path: any) => window.location.origin + path
 
-export const fetcher = (...args) => fetch(...args).then((res) => res.json())
+// export const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-export const deleteEntry = async (id) => {
+export const deleteEntry = async (id: string) => {
   const res = await fetch(
     new Request(createURL(`/api/entry/${id}`), {
       method: 'DELETE',
@@ -16,11 +16,10 @@ export const deleteEntry = async (id) => {
   }
 }
 
-export const newEntry = async () => {
+export const createNewEntry = async () => {
   const res = await fetch(
-    new Request(createURL('/api/entry'), {
+    new Request(createURL('/api/journal'), {
       method: 'POST',
-      body: JSON.stringify({ content: 'new entry' }),
     })
   )
 
@@ -31,11 +30,11 @@ export const newEntry = async () => {
   }
 }
 
-export const updateEntry = async (id, updates) => {
+export const updateEntry = async (id, content) => {
   const res = await fetch(
-    new Request(createURL(`/api/entry/${id}`), {
+    new Request(createURL(`/api/journal/${id}`), {
       method: 'PATCH',
-      body: JSON.stringify({ updates }),
+      body: JSON.stringify({ content }),
     })
   )
 
@@ -46,17 +45,17 @@ export const updateEntry = async (id, updates) => {
   }
 }
 
-export const askQuestion = async (question) => {
-  const res = await fetch(
-    new Request(createURL(`/api/question`), {
-      method: 'POST',
-      body: JSON.stringify({ question }),
-    })
-  )
+// export const askQuestion = async (question) => {
+//   const res = await fetch(
+//     new Request(createURL(`/api/question`), {
+//       method: 'POST',
+//       body: JSON.stringify({ question }),
+//     })
+//   )
 
-  if (res.ok) {
-    return res.json()
-  } else {
-    throw new Error('Something went wrong on API server!')
-  }
-}
+//   if (res.ok) {
+//     return res.json()
+//   } else {
+//     throw new Error('Something went wrong on API server!')
+//   }
+// }
